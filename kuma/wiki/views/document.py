@@ -41,8 +41,7 @@ from ..decorators import (allow_CORS_GET, check_readonly, prevent_indexing,
                           process_document_path)
 from ..events import EditDocumentEvent, EditDocumentInTreeEvent
 from ..forms import TreeMoveForm
-from ..models import (Document, DocumentDeletionLog,
-                      DocumentRenderedContentNotAvailable)
+from ..models import (Document, DocumentRenderedContentNotAvailable)
 from ..tasks import move_page
 
 
@@ -596,13 +595,6 @@ def document(request, document_slug, document_locale):
                                                         document_slug)
 
     if doc is None:
-        # Possible the document once existed, but is now deleted.
-        # If so, show that it was deleted.
-        deletion_log_entries = DocumentDeletionLog.objects.filter(
-            locale=document_locale,
-            slug=document_slug
-        )
-
         # We can throw a 404 immediately if the request type is HEAD.
         # TODO: take a shortcut if the document was found?
         if request.method == 'HEAD':
