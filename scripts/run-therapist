@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e  # Exit on non-zero status
+set -u  # Treat unset variables as an error
+
+# XXX We could wrap the creation and installation of the virtualenv
+# with a check to see if the directory already exists.
+# E.g. `if [ -d "$DIRECTORY" ]; then`
+
+# When we're in Python 3 we should use the builtin instead
+# https://docs.python.org/3/library/venv.html
+pip install --user virtualenv
+/home/kuma/.local/bin/virtualenv .lintvenv
+source .lintvenv/bin/activate
+pip install -r requirements/lint.txt
+
+therapist run

@@ -95,3 +95,4 @@ kuma/static/js/libs/ckeditor/source/ckbuilder/
 
 # Emacs backup files
 *~
+.lintvenv/

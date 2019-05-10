@@ -197,5 +197,8 @@ npmrefresh:
 	echo '{"lockfileVersion": 1}' > package-lock.json
 	npm install
 
+docker-therapist:
+	docker-compose exec web scripts/run-therapist
+
 # Those tasks don't have file targets
-.PHONY: test coveragetest locust clean locale install compilejsi18n collectstatic localetest localeextract localecompile localerefresh npmrefresh webpack compile-react-i18n locale-populate-react
+.PHONY: test coveragetest locust clean locale install compilejsi18n collectstatic localetest localeextract localecompile localerefresh npmrefresh webpack compile-react-i18n locale-populate-react docker-therapist
