@@ -24,9 +24,7 @@ module.exports = api => {
         [
             path.join(nodePath, '@babel/preset-env'),
             {
-                targets: {
-                    browsers: 'last 2 versions'
-                }
+                targets: '> 1%, IE >= 9, last 2 versions'
             }
         ]
     ];
